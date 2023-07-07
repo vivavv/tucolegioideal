@@ -3,9 +3,10 @@ import { Button } from "../../components/Button";
 interface TabsProps {
   selected: number;
   onSelect: (value: number) => void;
+  onOpen: () => void;
 }
 
-export const Tabs: React.FC<TabsProps> = ({ selected, onSelect }) => {
+export const Tabs: React.FC<TabsProps> = ({ selected, onSelect, onOpen }) => {
   const tabs = ["Todos", "Profesores", "Administradores"];
 
   return (
@@ -25,10 +26,7 @@ export const Tabs: React.FC<TabsProps> = ({ selected, onSelect }) => {
           </div>
         ))}
       </div>
-      <Button
-        onClick={() => console.log("add user")}
-        buttonClass="mb-4 order-1 lg:order-2"
-      >
+      <Button onClick={() => onOpen()} buttonClass="mb-4 order-1 lg:order-2">
         Nuevo Usuario
       </Button>
     </div>

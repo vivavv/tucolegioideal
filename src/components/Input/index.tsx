@@ -35,11 +35,6 @@ export const Input: React.FC<InputProps> = ({
         id={id}
         variant="outlined"
         type={password && !showPassword ? "password" : "text"}
-        sx={{
-          input: {
-            borderRadius: "10px",
-          },
-        }}
         InputProps={{
           endAdornment:
             password &&
@@ -72,6 +67,9 @@ export const Input: React.FC<InputProps> = ({
             borderRadius: "10px",
             "& fieldset.MuiOutlinedInput-notchedOutline": {
               borderColor: variant === "primary" ? "#92C8D8" : "#E5E5E5",
+            },
+            "& input.MuiInputBase-input": {
+              zIndex: 500000,
             },
           },
         }}

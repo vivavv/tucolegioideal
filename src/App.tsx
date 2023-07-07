@@ -1,7 +1,7 @@
 import { Content } from "./layouts/Content";
 import { Navbar } from "./layouts/Navbar";
 import { Sidebar } from "./layouts/Sidebar";
-import { Settings } from "./pages/Settings";
+import { Users } from "./pages/Users";
 
 export const App = () => {
   return (
@@ -12,8 +12,8 @@ export const App = () => {
       <div className="hidden xl:block w-1/4">
         <Sidebar />
       </div>
-      <Content title="Configuración">
-        <Settings />
+      <Content title="Usuarios">
+        <Users />
       </Content>
     </div>
   );

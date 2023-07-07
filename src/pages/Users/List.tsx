@@ -19,7 +19,7 @@ export const List: React.FC<ListProps> = ({ users }) => {
   };
 
   return (
-    <div className="flex flex-col gap-y-5 pt-8 text-left">
+    <div className="flex flex-col gap-y-5 pt-8">
       {/* Header */}
       <div className="flex justify-between items-center">
         {columns.map((column, index) => (
