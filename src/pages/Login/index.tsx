@@ -1,4 +1,4 @@
-import loginImage from "../assets/login.png";
+import loginImage from "../../assets/login.png";
 import { Input } from "../../components/Input";
 import { Logo } from "../../components/Logo/LogoDark";
 
@@ -9,8 +9,13 @@ export const Login = () => {
         <div className="flex flex-col items-center lg:items-start gap-y-8 w-72 lg:w-96">
           <Logo />
           <h1 className="font-bold text-2xl lg:text-4xl">Inicia sesión</h1>
-          <Input label="Usuario" id="user" />
-          <Input label="Contraseña" password id="password" />
+          <Input label="Usuario" id="user" variant="secondary" />
+          <Input
+            label="Contraseña"
+            password
+            id="password"
+            variant="secondary"
+          />
           <button
             type="submit"
             className="flex justify-center items-center text-center w-full py-5 bg-[#FDCA3D] rounded-[10px] font-bold text-white transion-colors duration-200 ease-in-out hover:bg-[#fdd156]"

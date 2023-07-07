@@ -3,7 +3,7 @@ import { Input } from "../../components/Input";
 
 export const Settings = () => {
   return (
-    <div className="flex flex-col  gap-y-6 w-80 lg:w-[450px] h-full">
+    <div className="flex flex-col ml-auto mr-auto gap-y-6 w-80 lg:w-[450px] h-full">
       <Input id="user" label="Programa" variant="primary" />
 
       <Input id="user" label="Usuario" variant="primary" />

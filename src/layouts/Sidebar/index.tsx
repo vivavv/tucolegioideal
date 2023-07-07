@@ -4,7 +4,7 @@ import { ViewList } from "../../components/ViewList";
 
 export const Sidebar = () => {
   return (
-    <div className="flex flex-col items-center text-left pt-9 pb-16 bg-[#263238] h-full text-white">
+    <aside className="flex flex-col items-center text-left pt-9 pb-16 bg-[#263238] h-full text-white">
       <LogoClear />
       {/* User name */}
       <div className="text-2xl text-left my-12 w-full pl-16">
@@ -15,6 +15,6 @@ export const Sidebar = () => {
       <ViewList />
       {/* Logout */}
       <LogoutButton />
-    </div>
+    </aside>
   );
 };
