@@ -1,11 +1,5 @@
+import { User } from "../../services/backend";
 import { DeleteIcon } from "./icon";
-
-interface User {
-  username: string;
-  name: string;
-  email: string;
-  role: string;
-}
 
 interface ListProps {
   users: User[];

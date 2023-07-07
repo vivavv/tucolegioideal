@@ -4,20 +4,9 @@ import IconButton from "@mui/material/IconButton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { RowDetail } from "./RowDetail";
-import { TableCell, TableRow } from "@mui/material";
+import { Program } from "../../../services/backend";
 
-export interface Student {
-  name: string;
-  enrollmentDate: string;
-}
-
-interface RowProps {
-  name: string;
-  total: number;
-  list: Student[];
-}
-
-export const Row: React.FC<RowProps> = ({ name, total, list }) => {
+export const Row: React.FC<Program> = ({ name, total, list }) => {
   const [open, setOpen] = useState(false);
 
   return (
