@@ -1,6 +1,6 @@
 import loginImage from "../assets/login.png";
-import { Input } from "../components/Input";
-import { Logo } from "../components/Logo/LogoDark";
+import { Input } from "../../components/Input";
+import { Logo } from "../../components/Logo/LogoDark";
 
 export const Login = () => {
   return (
