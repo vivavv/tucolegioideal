@@ -4,6 +4,7 @@ import { List } from "./List";
 import { Tabs } from "./Tabs";
 import { CreateUserModal } from "./CreateUserModal";
 import { User, backend } from "../../services/backend";
+import { EmptyList } from "./List/EmptyList";
 
 export const Users = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -34,14 +35,26 @@ export const Users = () => {
         selected={selected}
         onSelect={(value) => setSelected(value)}
         onOpen={() => setOpen(true)}
+        hasUsers={users.length > 0}
       />
-      <List users={filteredList} onUserDelete={() => getUsers()} />
+      {filteredList.length > 0 ? (
+        <List users={filteredList} onUserDelete={() => getUsers()} />
+      ) : (
+        <EmptyList />
+      )}
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
         onClick={() => setOpen(false)}
       />
-      {open && <CreateUserModal onClose={() => setOpen(false)} />}
+      {open && (
+        <CreateUserModal
+          onClose={() => {
+            setOpen(false);
+            getUsers();
+          }}
+        />
+      )}
     </div>
   );
 };

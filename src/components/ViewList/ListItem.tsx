@@ -7,6 +7,7 @@ interface ListItemProps {
   title: string;
   active: boolean;
   route: string;
+  onClick: () => void;
 }
 
 export const ListItem: React.FC<ListItemProps> = ({
@@ -14,6 +15,8 @@ export const ListItem: React.FC<ListItemProps> = ({
   title,
   active,
   route,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onClick = () => {},
 }) => {
   const iconClass = `w-5 h-5 lg:w-7 lg:h-7 ${
     active ? "fill-[#263238]" : "fill-white group-hover:fill-[#263238]"
@@ -35,6 +38,7 @@ export const ListItem: React.FC<ListItemProps> = ({
           : "text-white hover:bg-white hover:text-[#263238]"
       }`}
       to={route}
+      onClick={onClick}
     >
       <div>{icons[icon]}</div>
       <div className="text-lg lg:text-2xl w-32 lg:w-56">{title}</div>

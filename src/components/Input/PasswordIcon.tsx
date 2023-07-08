@@ -22,6 +22,7 @@ export const PasswordIcon: React.FC<PasswordIconProps> = ({
           ":hover": {
             color: "#92C8D8",
           },
+          zIndex: 5001,
         }}
         onClick={() => onChange(true)}
       />
@@ -34,6 +35,7 @@ export const PasswordIcon: React.FC<PasswordIconProps> = ({
           ":hover": {
             color: "#92C8D8",
           },
+          zIndex: 5001,
         }}
         onClick={() => onChange(false)}
       />

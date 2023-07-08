@@ -8,12 +8,26 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
   variant: "primary" | "secondary";
+  defaultValue?: string;
   errors?: FieldError;
   password?: boolean;
+  disabled?: boolean;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ id, label, variant, password = false, errors, ...rest }, ref) => {
+  (
+    {
+      id,
+      label,
+      variant,
+      defaultValue = "",
+      password = false,
+      disabled = false,
+      errors,
+      ...rest
+    },
+    ref
+  ) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const borderColorClass = errors
@@ -41,7 +55,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           type={password && !showPassword ? "password" : "text"}
           inputRef={ref}
           {...(rest as any)}
+          disabled={disabled}
           InputProps={{
+            defaultValue: defaultValue,
             endAdornment: (
               <PasswordIcon
                 password={password}
@@ -53,9 +69,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               borderRadius: "10px",
               "& fieldset.MuiOutlinedInput-notchedOutline": {
                 borderColor: borderColorClass,
+                background: disabled ? "#d1d5db" : "white",
               },
               "& input.MuiInputBase-input": {
-                zIndex: 500000,
+                zIndex: 5000,
               },
             },
           }}

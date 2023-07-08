@@ -1,5 +1,5 @@
-import { User, backend } from "../../services/backend";
-import { DeleteIcon } from "./icon";
+import { User, backend } from "../../../services/backend";
+import { DeleteIcon } from "../icon";
 
 interface ListProps {
   users: User[];

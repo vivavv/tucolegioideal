@@ -47,7 +47,6 @@ export class FakeBackend {
         role: "Profesor",
         program: "2",
       },
-
       {
         username: "Vivi",
         name: "Viviana Valentina Rodríguez",
@@ -55,6 +54,22 @@ export class FakeBackend {
         password: "123456789",
         role: "Profesor",
         program: "3",
+      },
+      {
+        username: "AdminTest",
+        name: "User Admin Test",
+        email: "admintest@gmail.com",
+        password: "test1234",
+        role: "Admin",
+        program: "10",
+      },
+      {
+        username: "ProfesorTest",
+        name: "User Profesor Test",
+        email: "profesortest@gmail.com",
+        password: "test1234",
+        role: "Profesor",
+        program: "11",
       },
     ];
     this.programs = [
@@ -172,6 +187,20 @@ export class FakeBackend {
     if (userIndex !== -1) {
       this.users.splice(userIndex, 1);
     }
+  }
+
+  async editUser(username: string, newUser: User) {
+    const userIndex = this.users.findIndex(
+      (u) => u.username.toLowerCase() === username.toLowerCase()
+    );
+
+    if (userIndex !== -1) {
+      this.users[userIndex] = newUser;
+    }
+  }
+
+  async createUser(user: User) {
+    this.users.push(user);
   }
 
   async getPrograms() {

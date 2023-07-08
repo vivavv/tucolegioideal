@@ -4,9 +4,15 @@ interface TabsProps {
   selected: number;
   onSelect: (value: number) => void;
   onOpen: () => void;
+  hasUsers: boolean;
 }
 
-export const Tabs: React.FC<TabsProps> = ({ selected, onSelect, onOpen }) => {
+export const Tabs: React.FC<TabsProps> = ({
+  selected,
+  onSelect,
+  onOpen,
+  hasUsers,
+}) => {
   const tabs = ["Todos", "Profesores", "Administradores"];
 
   return (
@@ -18,6 +24,8 @@ export const Tabs: React.FC<TabsProps> = ({ selected, onSelect, onOpen }) => {
               selected === index
                 ? "text-[#28ABE7] font-bold"
                 : "text-[#0F0F0F] hover:font-bold hover:text-[#28ABE7]"
+            } ${
+              !hasUsers ? "pointer-events-none text-gray-500 font-normal" : ""
             }`}
             key={index}
             onClick={() => onSelect(index)}
