@@ -9,10 +9,8 @@ export const Content: React.FC<ContentProps> = ({ title, children }) => {
   const location = useLocation();
   const { pathname } = location;
 
-  console.log(pathname);
-
   return (
-    <div
+    <section
       className={`flex-1 flex flex-col items-center gap-y-8 lg:gap-y-16 px-4 lg:px-16 py-9 2xl:py-14 relative overflow-y-auto ${
         pathname === "/settings" ? "bg-[#F9FEFF]" : "bg-white"
       }`}
@@ -21,6 +19,6 @@ export const Content: React.FC<ContentProps> = ({ title, children }) => {
       <div className="flex-1 w-full max-h-full overflow-y-auto custom-scrollbar">
         {children}
       </div>
-    </div>
+    </section>
   );
 };

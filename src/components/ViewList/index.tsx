@@ -4,7 +4,7 @@ import { ListItem } from "./ListItem";
 import { UserContext } from "../../contexts/UserContext";
 
 interface ViewListProp {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const ViewList = ({ onClick }: ViewListProp) => {

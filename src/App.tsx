@@ -27,7 +27,7 @@ export const App: React.FC<AppProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-col xl:flex-row w-full h-full">
+    <section className="flex flex-col xl:flex-row w-full h-full">
       <div className="w-full xl:hidden">
         <Navbar />
       </div>
@@ -35,6 +35,6 @@ export const App: React.FC<AppProps> = ({ children }) => {
         <Sidebar />
       </div>
       <Content title={title[pathname]}>{children}</Content>
-    </div>
+    </section>
   );
 };
