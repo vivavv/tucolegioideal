@@ -1,4 +1,4 @@
-import { Student } from ".";
+import { Student } from "../../../services/backend";
 
 interface RowDetailProps {
   list: Student[];

@@ -4,9 +4,9 @@ import IconButton from "@mui/material/IconButton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { RowDetail } from "./RowDetail";
-import { Program } from "../../../services/backend";
+import { ClassProgram } from "../../../services/backend";
 
-export const Row: React.FC<Program> = ({ name, total, list }) => {
+export const Row: React.FC<ClassProgram> = ({ name, total, list }) => {
   const [open, setOpen] = useState(false);
 
   return (

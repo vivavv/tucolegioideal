@@ -1,8 +1,15 @@
+import { useEffect, useState } from "react";
 import { Paper, Table, TableBody, TableContainer } from "@mui/material";
 import { Row } from "./Row";
-import { rows } from "./rows";
+import { ClassProgram, backend } from "../../services/backend";
 
 export const Students = () => {
+  const [programs, setPrograms] = useState<ClassProgram[]>([]);
+
+  useEffect(() => {
+    backend.getPrograms().then((result) => setPrograms(result));
+  }, []);
+
   return (
     <div className="flex flex-col gap-y-4">
       <div className="flex items-center justify-between gap-x-4 uppercase px-2 lg:px-8 w-full">
@@ -15,7 +22,7 @@ export const Students = () => {
       <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
         <Table aria-label="collapsible table">
           <TableBody>
-            {rows.map((row) => (
+            {programs.map((row) => (
               <Row
                 key={row.name}
                 name={row.name}

@@ -1,20 +1,32 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Backdrop } from "@mui/material";
 import { List } from "./List";
 import { Tabs } from "./Tabs";
-import { userList } from "./userList";
 import { CreateUserModal } from "./CreateUserModal";
+import { User, backend } from "../../services/backend";
 
 export const Users = () => {
+  const [users, setUsers] = useState<User[]>([]);
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
 
-  const filteredList =
-    selected !== 0
-      ? userList.filter((user) =>
+  const getUsers = async () => {
+    const users = await backend.getUsers();
+
+    setUsers(users);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const filteredList = useMemo(() => {
+    return selected !== 0
+      ? users.filter((user) =>
           selected === 1 ? user.role === "Profesor" : user.role === "Admin"
         )
-      : userList;
+      : users;
+  }, [users, selected]);
 
   return (
     <div className="flex flex-col gap-y-4 h-full">
@@ -23,7 +35,7 @@ export const Users = () => {
         onSelect={(value) => setSelected(value)}
         onOpen={() => setOpen(true)}
       />
-      <List users={filteredList} />
+      <List users={filteredList} onUserDelete={() => getUsers()} />
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

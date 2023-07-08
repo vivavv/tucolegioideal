@@ -1,15 +1,17 @@
-import { User } from "../../services/backend";
+import { User, backend } from "../../services/backend";
 import { DeleteIcon } from "./icon";
 
 interface ListProps {
   users: User[];
+  onUserDelete: () => void;
 }
 
-export const List: React.FC<ListProps> = ({ users }) => {
+export const List: React.FC<ListProps> = ({ users, onUserDelete }) => {
   const columns = ["Usuario", "Nombre", "Correo", "Rol", ""];
 
-  const onDelete = () => {
-    console.log("deleted!");
+  const onDelete = async (user: User) => {
+    await backend.deleteUser(user);
+    onUserDelete();
   };
 
   return (
@@ -36,7 +38,7 @@ export const List: React.FC<ListProps> = ({ users }) => {
             <div className="w-1/5 break-words">{user.name}</div>
             <div className="w-1/5 break-words">{user.email}</div>
             <div>{user.role}</div>
-            <DeleteIcon onClick={onDelete} />
+            <DeleteIcon onClick={() => onDelete(user)} />
           </div>
         ))}
       </div>
