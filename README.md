@@ -41,3 +41,20 @@ Start the server
 - layouts: reusable page layouts
 - pages: project views
 - services: api integrations, in this case it only contains a mockup for the backend
+## Tech Stack
+
+**Client:** React, TypeScript, TailwindCSS
+
+
+
+## Auth
+
+Credentials to login
+
+- Admin User:\
+    **username**: AdminTest\
+    **password**: test1234
+
+- Professor User:\
+  **username**: ProfesorTest\
+    **password**: test1234
