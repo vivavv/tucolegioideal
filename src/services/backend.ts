@@ -12,7 +12,7 @@ export interface Student {
   enrollmentDate: string;
 }
 
-export interface Program {
+export interface ClassProgram {
   name: string;
   total: number;
   list: Student[];
@@ -20,7 +20,7 @@ export interface Program {
 
 export class FakeBackend {
   users: User[];
-  programs: Program[];
+  programs: ClassProgram[];
 
   constructor() {
     this.users = [
@@ -158,6 +158,24 @@ export class FakeBackend {
     }
 
     return user;
+  }
+
+  async getUsers() {
+    return [...this.users];
+  }
+
+  async deleteUser(user: User) {
+    const userIndex = this.users.findIndex(
+      (u) => u.username.toLowerCase() === user.username.toLowerCase()
+    );
+
+    if (userIndex !== -1) {
+      this.users.splice(userIndex, 1);
+    }
+  }
+
+  async getPrograms() {
+    return [...this.programs];
   }
 }
 

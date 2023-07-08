@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Alert, Snackbar } from "@mui/material";
@@ -7,6 +7,7 @@ import { Input } from "../../components/Input";
 import { Logo } from "../../components/Logo/LogoDark";
 import { backend } from "../../services/backend";
 import { passwordValidation, userValidation } from "./validation";
+import { UserContext } from "../../contexts/UserContext";
 
 interface LoginFormData {
   user: string;
@@ -16,6 +17,7 @@ interface LoginFormData {
 export const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const { saveUser } = useContext(UserContext);
 
   const {
     register,
@@ -31,7 +33,9 @@ export const Login = () => {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      await backend.login(data.user, data.password);
+      const user = await backend.login(data.user, data.password);
+
+      saveUser(user);
 
       navigate("/students");
     } catch (err) {

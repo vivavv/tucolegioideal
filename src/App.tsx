@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { Content } from "./layouts/Content";
 import { Navbar } from "./layouts/Navbar";
 import { Sidebar } from "./layouts/Sidebar";
-import { UserProvider } from "./contexts/UserContext";
 
 type AppProps = PropsWithChildren;
 
@@ -18,16 +17,14 @@ export const App: React.FC<AppProps> = ({ children }) => {
   };
 
   return (
-    <UserProvider>
-      <div className="flex flex-col xl:flex-row w-full h-full">
-        <div className="w-full xl:hidden">
-          <Navbar />
-        </div>
-        <div className="hidden xl:block w-1/4">
-          <Sidebar />
-        </div>
-        <Content title={title[pathname]}>{children}</Content>
+    <div className="flex flex-col xl:flex-row w-full h-full">
+      <div className="w-full xl:hidden">
+        <Navbar />
       </div>
-    </UserProvider>
+      <div className="hidden xl:block w-1/4">
+        <Sidebar />
+      </div>
+      <Content title={title[pathname]}>{children}</Content>
+    </div>
   );
 };

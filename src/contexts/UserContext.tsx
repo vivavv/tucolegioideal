@@ -6,11 +6,13 @@ type UserProvider = PropsWithChildren;
 interface UserContextValue {
   user: User | null;
   saveUser: (user: User) => void;
+  deleteUser: () => void;
 }
 
-const UserContext = createContext<UserContextValue>({
+export const UserContext = createContext<UserContextValue>({
   user: null,
   saveUser: () => undefined,
+  deleteUser: () => undefined,
 });
 
 export const UserProvider: React.FC<UserProvider> = ({ children }) => {
@@ -18,8 +20,10 @@ export const UserProvider: React.FC<UserProvider> = ({ children }) => {
 
   const saveUser = (user: User) => setUser(user);
 
+  const deleteUser = () => setUser(null);
+
   return (
-    <UserContext.Provider value={{ user, saveUser }}>
+    <UserContext.Provider value={{ user, saveUser, deleteUser }}>
       {children}
     </UserContext.Provider>
   );
