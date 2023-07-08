@@ -47,3 +47,13 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #23b8e3;
 }
+
+/* @font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url("./assets/Montserrat-Regular.ttf") format("truetype");
+} */
+
+.font-face-montserrat {
+  font-family: "Montserrat";
+}
