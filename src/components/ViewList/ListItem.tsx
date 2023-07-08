@@ -7,7 +7,7 @@ interface ListItemProps {
   title: string;
   active: boolean;
   route: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const ListItem: React.FC<ListItemProps> = ({
